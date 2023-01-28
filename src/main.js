@@ -15,14 +15,9 @@ import router from './router'
 import '@/icons' // icon
 import '@/permission' // permission control
 
-/**
- * If you don't want to use mock-server
- * you want to use MockJs for mock api
- * you can execute: mockXHR()
- *
- * Currently MockJs will be used in the production environment,
- * please remove it before going online ! ! !
- */
+// 两个配置文件 .env.development 开发环境会被加载 .env.production 生产环境被载入
+// 在配置文件中写 key=value 这种语法
+// process.env.key 根据不同的环境加载上面2个不同的配置文件
 if (process.env.NODE_ENV === 'production') {
   const { mockXHR } = require('../mock')
   mockXHR()
@@ -39,5 +34,5 @@ new Vue({
   el: '#app',
   router,
   store,
-  render: h => h(App)
+  render: (h) => h(App)
 })
